@@ -1,25 +1,39 @@
-name: Build Tugas 5
+#include <iostream>
+using namespace std;
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+int main() {
+    int angka[100];
+    int jumlah;
 
-jobs:
-  build:
-    runs-on: windows-latest
+    cout << "=================================" << endl;
+    cout << "     CEK BILANGAN GENAP/GANJIL" << endl;
+    cout << "=================================" << endl;
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    cout << "Masukkan jumlah angka: ";
+    cin >> jumlah;
 
-      - name: Compile C++
-        shell: bash
-        run: g++ tugas_5.cpp -o tugas_5.exe -static
+    for (int i = 0; i < jumlah; i++) {
+        cout << "Masukkan angka ke-" << i + 1 << ": ";
+        cin >> angka[i];
+    }
 
-      - name: Upload EXE
-        uses: actions/upload-artifact@v4
-        with:
-          name: tugas_5-exe
-          path: tugas_5.exe
+    cout << endl;
+    cout << "=================================" << endl;
+    cout << "           HASIL" << endl;
+    cout << "=================================" << endl;
+
+    for (int i = 0; i < jumlah; i++) {
+        if (angka[i] % 2 == 0) {
+            cout << angka[i] << " = GENAP" << endl;
+        }
+        else {
+            cout << angka[i] << " = GANJIL" << endl;
+        }
+    }
+
+    cout << "=================================" << endl;
+
+    system("pause");
+
+    return 0;
+}
